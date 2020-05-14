@@ -1,0 +1,43 @@
+<!-- ./views/index.handlebars -->
+<div class="container mt-5">
+  <!-- search bar -->
+  <div class="row" id="search-bar">
+    <div class="col-12">
+      <form action="/search">
+        <div class="input-group mb-3">
+          <input type="text" name="keyword" class="form-control" placeholder="Enter restaurant name to search..."
+            aria-label="Restaurant Name..." aria-describedby="search-button" value="{{keyword}}">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit" id="search-button">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- movie list -->
+
+  <div class="row" id="data-panel">
+    {{#each restaurants}}
+    <div class="col-sm-3">
+      <a href="/restaurants/{{this.id}}" class="text-secondary">
+        <div class="card mb-2">
+          <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+          <div class="card-body movie-item-body">
+            <h6 class="card-title">{{this.name}}</h6>
+
+            <div class="restaurant-category mb-1">
+              <i class="fas fa-utensils pr-2 fa-2x"></i> {{this.category}}
+            </div>
+
+            <span class="badge badge-pill badge-danger font-weight-normal">
+              {{this.rating}}
+              <i class="fas fa-star fa-sm"></i>
+            </span>
+
+          </div>
+        </div>
+      </a>
+    </div>
+    {{/each}}
+  </div>
+</div>

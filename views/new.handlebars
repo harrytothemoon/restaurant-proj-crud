@@ -1,0 +1,48 @@
+<form action='/new' method="POST">
+  <div class='card p-3 m-3 mx-auto' style="width: 50vw;">
+    <div class="form-row">
+      <div class='col-12'>
+        <p style="color: rgb(182, 26, 26);">* Require</p>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputname4">Name *</label>
+        <input type="name" class="form-control" id="inputname4" placeholder="Name" name='name'>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputcategory4">Category</label>
+        <input type="category" class="form-control" id="inputcategory4" placeholder="Category" name="category">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputlocation">Location *</label>
+      <input type="text" class="form-control" id="inputlocation" placeholder="1234 Main St" name="location">
+    </div>
+    <div class="form-row d-flex justify-content-between">
+      <div class="form-group col-md-6">
+        <label for="inputphone">Phone *</label>
+        <input type="text" class="form-control" id="inputphone" placeholder="e.g. 01 2345 6789" name="phone">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputrating">Rating</label>
+        <input type="text" class="form-control" id="inputrating" placeholder="e.g. 4.1" name="rating">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputimage">Image-URL *</label>
+      <input type="text" class="form-control" id="inputimage" placeholder="Image-URL" name="image">
+    </div>
+    <div class="form-group">
+      <label for="inputgoogle_map">Googlemap-URL</label>
+      <input type="text" class="form-control" id="inputgoogle_map" placeholder="Googlemap-URL" name="google_map">
+    </div>
+    <div class="form-group">
+      <label for="inputdescription">Description</label>
+      <textarea type="text" class="form-control" id="inputdescription" placeholder="Description" name="description"
+        rows='3'></textarea>
+    </div>
+    <div class="row d-flex justify-content-between">
+      <button type="submit" class="btn btn-outline-secondary col-5 ml-2">Create</button>
+      <button type="button" onclick="location.href='../'" class="btn btn-outline-secondary col-5 mr-2">Back</button>
+    </div>
+  </div>
+</form>

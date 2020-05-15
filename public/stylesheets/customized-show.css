@@ -13,7 +13,8 @@ header {
 .banner {
   position: relative;
   z-index: -1;
-  margin: -5px;
+  margin-left: -5px;
+  width: calc(100% + 10px);
   height: 360px;
   background: #dddddd center center url('https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg');
   background-size: cover;
@@ -72,4 +73,8 @@ header {
   .restaurant-show-title {
     font-size: 2rem;
   }
+}
+
+body {
+  overflow-x: hidden;
 }

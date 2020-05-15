@@ -62,7 +62,6 @@ app.post('/new', (req, res) => {
   const googleMap = req.body.googleMap
   const phone = req.body.phone
   const description = req.body.description
-  console.log(req.body)
   return Restaurant.create({ name, category, rating, image, location, googleMap, phone, description })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
@@ -96,7 +95,6 @@ app.post('/restaurants/:id/edit', (req, res) => {
       restaurant.googleMap = googleMap
       restaurant.phone = phone
       restaurant.description = description
-      console.log(req.body)
       return restaurant.save()
     })
     .then(() => res.redirect(`/restaurants/${id}`))

@@ -1,0 +1,52 @@
+<form action='/restaurants/{{restaurant._id}}/edit' method="POST">
+  <div class='card p-3 m-3 mx-auto' style="width: 50vw;">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputname4">Name</label>
+        <input type="name" class="form-control" id="inputname4" placeholder="Name" name='name'
+          value="{{restaurant.name}}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputcategory4">Category</label>
+        <input type="category" class="form-control" id="inputcategory4" placeholder="Category" name="category"
+          value="{{restaurant.category}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputlocation">Location</label>
+      <input type="text" class="form-control" id="inputlocation" placeholder="1234 Main St" name="location"
+        value="{{restaurant.location}}">
+    </div>
+    <div class="form-row d-flex justify-content-between">
+      <div class="form-group col-md-6">
+        <label for="inputphone">Phone</label>
+        <input type="text" class="form-control" id="inputphone" placeholder="e.g. 01 2345 6789" name="phone"
+          value="{{restaurant.phone}}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputrating">Rating</label>
+        <input type="text" class="form-control" id="inputrating" placeholder="e.g. 4.1" name="rating"
+          value="{{restaurant.rating}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputimage">Image URL</label>
+      <input type="text" class="form-control" id="inputimage" placeholder="Image URL" name="image"
+        value="{{restaurant.image}}">
+    </div>
+    <div class="form-group">
+      <label for="inputgoogle_map">Google Map URL</label>
+      <input type="text" class="form-control" id="inputgoogleMap" placeholder="Google Map URL" name="googleMap"
+        value="{{restaurant.googleMap}}">
+    </div>
+    <div class="form-group">
+      <label for="inputdescription">Description</label>
+      <textarea type="text" class="form-control" id="inputdescription" placeholder="Description" name="description"
+        rows='3'>{{restaurant.description}}</textarea>
+    </div>
+    <div class="row d-flex justify-content-between">
+      <button type="submit" class="btn btn-outline-secondary col-5 ml-2">Edit</button>
+      <button type="button" onclick="history.back()" class="btn btn-outline-secondary col-5 mr-2">Back</button>
+    </div>
+  </div>
+</form>

@@ -23,7 +23,7 @@ app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
-// routes setting
+// Home page
 app.get('/', (req, res) => {
   Restaurant.find()
     .lean()
@@ -31,8 +31,8 @@ app.get('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// Detail function
 app.get('/restaurants/:id', (req, res) => {
-  //new restaurant array
   const id = req.params.id
   return Restaurant.findById(id)
     .lean()
@@ -40,8 +40,8 @@ app.get('/restaurants/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// Search function
 app.get('/search', (req, res) => {
-  //new restaurant array
   const keyword = req.query.keyword
   Restaurant.find({ name: { $regex: keyword, $options: "i" } })
     .lean()
@@ -49,22 +49,57 @@ app.get('/search', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// Create function
 app.get('/new', (req, res) => {
   return res.render('new')
 })
-
 app.post('/new', (req, res) => {
   const name = req.body.name
   const category = req.body.category
   const rating = req.body.rating
   const image = req.body.image
   const location = req.body.location
-  const google_map = req.body.google_map
+  const googleMap = req.body.googleMap
   const phone = req.body.phone
   const description = req.body.description
   console.log(req.body)
-  return Restaurant.create({ name, category, rating, image, location, google_map, phone, description })
+  return Restaurant.create({ name, category, rating, image, location, googleMap, phone, description })
     .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+// Edit Function
+app.get('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('edit', { restaurant }))
+    .catch(error => console.log(error))
+})
+app.post('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  const name = req.body.name
+  const category = req.body.category
+  const rating = req.body.rating
+  const image = req.body.image
+  const location = req.body.location
+  const googleMap = req.body.googleMap
+  const phone = req.body.phone
+  const description = req.body.description
+  return Restaurant.findById(id)
+    .then(restaurant => {
+      restaurant.name = name
+      restaurant.category = category
+      restaurant.rating = rating
+      restaurant.image = image
+      restaurant.location = location
+      restaurant.googleMap = googleMap
+      restaurant.phone = phone
+      restaurant.description = description
+      console.log(req.body)
+      return restaurant.save()
+    })
+    .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.log(error))
 })
 

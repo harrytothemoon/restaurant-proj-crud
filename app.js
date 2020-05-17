@@ -17,7 +17,14 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 
-app.engine('handlebars', exphbs({ defaultlayout: 'main' }))
+const helper = exphbs.create({
+  defaultlayout: 'main',
+  helpers: {
+    eq: function (v1, v2) { return (v1 === v2) }
+  }
+})
+
+app.engine('handlebars', helper.engine)
 app.set('view engine', 'handlebars')
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -107,6 +114,16 @@ app.post('/restaurants/:id/delete', (req, res) => {
   return Restaurant.findById(id)
     .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+// Sort Function
+app.get('/:sort', (req, res) => {
+  let sort = req.params.sort
+  Restaurant.find()
+    .lean()
+    .sort(sort)
+    .then(restaurants => res.render('index', { restaurants, sort }))
     .catch(error => console.log(error))
 })
 

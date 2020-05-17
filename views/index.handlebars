@@ -3,14 +3,14 @@
 <div class="container mt-2">
   <!-- search bar & creat button -->
   <div class="row d-flex justify-content-between" id="search-bar">
-    <div class="col-3">
+    <div>
       <form action="/new">
-        <div class="input-group mb-3 ml-1">
+        <div class="input-group mb-3 ml-3">
           <button class="btn btn-outline-secondary" type="submit" id="create-button">Create</button>
         </div>
       </form>
     </div>
-    <div class="col-6">
+    <div class="col-6 mb-3">
       <form action="/search">
         <div class="input-group mb-3">
           <input type="text" name="keyword" class="form-control" placeholder="Enter restaurant name to search..."
@@ -20,6 +20,20 @@
           </div>
         </div>
       </form>
+    </div>
+    <div class="dropdown mb-3 mr-3">
+      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{#if sort}} {{#if (eq sort 'name')}} A -> Z {{else}} {{#if (eq sort '-name')}} Z -> A {{else}} {{sort}}
+        {{/if}} {{/if}} {{else}} Sort {{/if}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="/name" name="name">A -> Z</a>
+        <a class="dropdown-item" href="/-name">Z -> A</a>
+        <a class="dropdown-item" href="/category">類別</a>
+        <a class="dropdown-item" href="/location">地區</a>
+        <a class="dropdown-item" href="/rating">評比</a>
+      </div>
     </div>
   </div>
   <!-- movie list -->

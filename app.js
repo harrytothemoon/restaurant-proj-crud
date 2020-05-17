@@ -3,6 +3,8 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const methodOverride = require('method-override')
+
 const Restaurant = require('./models/restaurant')
 
 const app = express()
@@ -29,6 +31,7 @@ app.set('view engine', 'handlebars')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
+app.use(methodOverride('_method'))
 
 // Home page
 app.get('/', (req, res) => {
@@ -82,7 +85,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
     .then(restaurant => res.render('edit', { restaurant }))
     .catch(error => console.log(error))
 })
-app.post('/restaurants/:id/edit', (req, res) => {
+app.put('/restaurants/:id/edit', (req, res) => {
   const id = req.params.id
   const name = req.body.name
   const category = req.body.category
@@ -109,7 +112,7 @@ app.post('/restaurants/:id/edit', (req, res) => {
 })
 
 // Delete Function
-app.post('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id/delete', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then(restaurant => restaurant.remove())

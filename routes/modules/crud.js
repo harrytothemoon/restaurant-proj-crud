@@ -21,14 +21,7 @@ router.get('/:id/edit', (req, res) => {
 })
 router.put('/:id/edit', (req, res) => {
   const id = req.params.id
-  const name = req.body.name
-  const category = req.body.category
-  const rating = req.body.rating
-  const image = req.body.image
-  const location = req.body.location
-  const googleMap = req.body.googleMap
-  const phone = req.body.phone
-  const description = req.body.description
+  const { name, category, rating, image, location, googleMap, phone, description } = req.body
   return Restaurant.findById(id)
     .then(restaurant => {
       restaurant.name = name
@@ -51,16 +44,6 @@ router.delete('/:id/delete', (req, res) => {
   return Restaurant.findById(id)
     .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
-
-// Sort Function
-router.get('/:sort', (req, res) => {
-  let sort = req.params.sort
-  Restaurant.find()
-    .lean()
-    .sort(sort)
-    .then(restaurants => res.render('index', { restaurants, sort }))
     .catch(error => console.log(error))
 })
 

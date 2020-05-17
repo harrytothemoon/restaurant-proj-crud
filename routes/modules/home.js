@@ -23,14 +23,7 @@ router.get('/new', (req, res) => {
   return res.render('new')
 })
 router.post('/new', (req, res) => {
-  const name = req.body.name
-  const category = req.body.category
-  const rating = req.body.rating
-  const image = req.body.image
-  const location = req.body.location
-  const googleMap = req.body.googleMap
-  const phone = req.body.phone
-  const description = req.body.description
+  const { name, category, rating, image, location, googleMap, phone, description } = req.body
   return Restaurant.create({ name, category, rating, image, location, googleMap, phone, description })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))

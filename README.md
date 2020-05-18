@@ -4,7 +4,7 @@
 
 #### Home Page (+sort) 
 
-![Webpicture](/public/sort.png)
+![Webpicture](/public/homepage.png)
 
 #### Show Page
 

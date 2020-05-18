@@ -16,7 +16,7 @@ header {
   margin-left: -5px;
   width: calc(100% + 10px);
   height: 360px;
-  background: #dddddd center center url('https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg');
+  background: #dddddd center center url('https://cdn.funnow.com.tw/images/oblog/0103_4a88bc.jpg');
   background-size: cover;
   filter: blur(3px);
 }

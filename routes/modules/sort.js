@@ -3,8 +3,9 @@ const router = express.Router()
 const Restaurant = require('../../models/restaurant')
 
 // Sort Function
-router.get('/:sort', (req, res) => {
-  let sort = req.params.sort
+router.get('/', (req, res) => {
+  const sort = req.query.sort
+  console.log(sort)
   Restaurant.find()
     .lean()
     .sort(sort)

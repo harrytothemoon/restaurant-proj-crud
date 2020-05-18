@@ -21,23 +21,21 @@
         </div>
       </form>
     </div>
-    <div class="dropdown mb-3 mr-3">
-      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {{#if sort}} {{#if (eq sort 'name')}} A -> Z {{else}} {{#if (eq sort '-name')}} Z -> A {{else}} {{sort}}
-        {{/if}} {{/if}} {{else}} Sort {{/if}}
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="/sort/name" name="name">A -> Z</a>
-        <a class="dropdown-item" href="/sort/-name">Z -> A</a>
-        <a class="dropdown-item" href="/sort/category">類別</a>
-        <a class="dropdown-item" href="/sort/location">地區</a>
-        <a class="dropdown-item" href="/sort/rating">評比</a>
-      </div>
+    <div class="mb-3 mr-3">
+      <form action="/sort" method="GET">
+        <select name="sort" class="form-control btn-outline-secondary" id='inputType' onchange="this.form.submit()"
+          style="cursor: pointer;">
+          <option value="name" disabled selected>Sort</option>
+          <option value="name" {{#if (eq sort 'name')}} selected {{/if}}>A -> Z</option>
+          <option value="-name" {{#if (eq sort '-name')}} selected {{/if}}>Z -> A</option>
+          <option value="category" {{#if (eq sort 'category')}} selected {{/if}}>類別</option>
+          <option value="location" {{#if (eq sort 'location')}} selected {{/if}}>地區</option>
+          <option value="rating" {{#if (eq sort 'rating')}} selected {{/if}}>評比</option>
+        </select>
+      </form>
     </div>
   </div>
   <!-- movie list -->
-
   <div class="row" id="data-panel">
     {{#each restaurants}}
     <div class="col-sm-3">

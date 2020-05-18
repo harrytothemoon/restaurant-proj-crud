@@ -21,7 +21,7 @@ router.get('/:id/edit', (req, res) => {
 })
 router.put('/:id/edit', (req, res) => {
   const id = req.params.id
-  const { name, category, rating, image, location, googleMap, phone, description } = req.body
+  const { name, category, rating, image, location, google_map, phone, description } = req.body
   return Restaurant.findById(id)
     .then(restaurant => {
       restaurant.name = name
@@ -29,7 +29,7 @@ router.put('/:id/edit', (req, res) => {
       restaurant.rating = rating
       restaurant.image = image
       restaurant.location = location
-      restaurant.googleMap = googleMap
+      restaurant.google_map = google_map
       restaurant.phone = phone
       restaurant.description = description
       return restaurant.save()

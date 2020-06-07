@@ -17,11 +17,17 @@
       <a class="navbar-brand" href="/">
         <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
           width="30" height="30" class="d-inline-block align-top" alt="好。吃">
-        My Restaurant List
+        {{#if isAuthenticated}}{{ user.name}}'s {{/if}} Restaurant List
       </a>
     </div>
+    {{#if isAuthenticated}}
+    <a href="/users/logout" class="btn btn-outline-dark mr-3">Logout</a>
+    {{else}}
+    <a href="/users/login" class="btn btn-outline-dark mr-3">Login</a>
+    {{/if}}
   </nav>
   <div class="banner"></div>
+
 
   {{{body}}}
 

@@ -4,9 +4,9 @@ const Restaurant = require('../../models/restaurant')
 
 // Sort Function
 router.get('/', (req, res) => {
+  const userId = req.user._id
   const sort = req.query.sort
-  console.log(sort)
-  Restaurant.find()
+  Restaurant.find({ userId })
     .lean()
     .sort(sort)
     .then(restaurants => res.render('index', { restaurants, sort }))

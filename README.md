@@ -3,24 +3,22 @@
 用Node.js + Express框架練習的作品，內容主要為餐廳清單及其詳細資訊。
 
 ## Getting Started
-Step 1 Clone and install node package
+Step.1 Clone and install node package
 ```
 $ git clone https://github.com/harry811016/restaurant-proj-crud.git
-```
-```
 $ npm install
 ```
-Step 2 Use envexample.js to set up process.env [here](/public/envexample.text)
+Step.2 Use envexample.js to set up process.env [here](/public/envexample.text)
 
-Step 3 Run seed data to build data quickly
+Step.3 Run seed data to build data quickly
 ```
 $ npm run seed
 ```
-Step 4 Execute server 
+Step.4 Execute server 
 ```
 $ npm run dev 
 ```
-Step 5 Enter following website on browser
+Step.5 Enter following website on browser
 ```
 http://localhost:3000
 ```

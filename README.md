@@ -10,7 +10,7 @@ $ npm install
 ```
 Step.2 Use env-example.txt in pubic folder to set up process.env 
 
-[Here](https://github.com/harry811016/restaurant-proj-crud/blob/master/public/env-example.txt)
+[Click Here](https://github.com/harry811016/restaurant-proj-crud/blob/master/public/env-example.txt)
 
 Step.3 Run seed data to build data quickly
 ```
